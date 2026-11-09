@@ -62,6 +62,11 @@ rápido.
 Se o arquivo não existir, o site **não** mostra o aviso nem finge tocar —
 de propósito, para não prometer o que não acontece.
 
+**Sobre direitos autorais:** a faixa é de terceiros e o site é um convite
+privado, compartilhado só com os convidados, sem fins comerciais. Decisão
+consciente de manter assim. Se um dia o site virar público ou comercial,
+a faixa precisa ser trocada por uma com licença adequada.
+
 **Por que às vezes não toca no primeiro segundo:** navegadores só liberam
 áudio depois de uma interação. O site tenta tocar ao carregar; se for
 barrado, liga no primeiro toque, clique ou rolagem do visitante. O aviso

@@ -18,7 +18,7 @@
     /* rede de seguranca: a mesma foto como fundo do bloco. Se o <img>
        nao renderizar por qualquer motivo no aparelho, a foto aparece
        mesmo assim. O <img> por cima cobre este fundo quando funciona. */
-    background-image: url("../assets/foto-casal.jpg");
+    background-image: url("../assets/foto-casal.webp");
     background-size: cover;
     background-position: 50% 28%;
     background-repeat: no-repeat;
@@ -30,7 +30,8 @@
      inconsistente no Safari do iOS — em alguns aparelhos a area
      aparecia vazia. Com background-size: cover o enquadramento e o
      mesmo e nao depende desse calculo. */
-  .hero__foto img { display: none; }
+  .hero__foto img,
+  .hero__foto picture { display: none; }
 
   .hero__texto {
     padding-inline: clamp(18px, 4vw, 40px);

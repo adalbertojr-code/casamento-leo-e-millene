@@ -17,4 +17,9 @@
 
 .logo--rodape { width: clamp(64px, 8vw, 88px); }
 
+/* o monograma rosa (#E28DA0) da so 1,28:1 sobre a faixa rosa do rodape
+   e praticamente some. O rodape usa monograma-vinho.png, a mesma arte
+   pintada em #9A0525, que chega a 4,53:1. */
+.logo--rodape img { display: block; }
+
 .logo:hover { opacity: 0.82; }

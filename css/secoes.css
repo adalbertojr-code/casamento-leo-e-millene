@@ -81,16 +81,6 @@
   color: var(--rosa-numero);
 }
 
-.historia__fim {
-  margin-top: clamp(20px, 2.6vw, 30px);
-  padding-top: clamp(16px, 2.2vw, 24px);
-  border-top: 1px solid var(--rosa-borda);
-  font-family: var(--script);
-  font-size: clamp(1.35rem, 2.7vw, 1.85rem);
-  color: var(--navy);
-  line-height: 1.4;
-}
-
 /* ---------- o grande dia ---------- */
 
 .dia {

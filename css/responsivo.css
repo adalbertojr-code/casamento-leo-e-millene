@@ -13,7 +13,11 @@
      da borda esquerda e a folga da onda nao se aplicam */
   .hero__foto {
     order: -1;
-    aspect-ratio: 4 / 3;
+    grid-row: 1;
+    /* altura em vw, nao aspect-ratio: no Safari do iOS o aspect-ratio
+       num item de grade com min-height:0 colapsava a altura para zero,
+       e ai nao aparece nem o <img> nem o background. 75vw = 4:3. */
+    height: 75vw;
     padding-bottom: 0;
     /* rede de seguranca: a mesma foto como fundo do bloco. Se o <img>
        nao renderizar por qualquer motivo no aparelho, a foto aparece
@@ -114,7 +118,8 @@
 
 @media (max-width: 520px) {
 
-  .hero__foto { aspect-ratio: 3 / 4; }
+  /* 4:3 de altura na tela estreita (era aspect-ratio 3/4) */
+  .hero__foto { height: 133vw; }
 
   .hero__titulo { font-size: min(13.5vw, 3.4rem); }
 

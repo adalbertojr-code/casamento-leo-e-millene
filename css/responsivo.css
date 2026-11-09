@@ -15,15 +15,22 @@
     order: -1;
     aspect-ratio: 4 / 3;
     padding-bottom: 0;
+    /* rede de seguranca: a mesma foto como fundo do bloco. Se o <img>
+       nao renderizar por qualquer motivo no aparelho, a foto aparece
+       mesmo assim. O <img> por cima cobre este fundo quando funciona. */
+    background-image: url("../assets/foto-casal.jpg");
+    background-size: cover;
+    background-position: 50% 28%;
+    background-repeat: no-repeat;
   }
 
-  /* a foto e retrato 3:4; num caixa 4:3 so sobra a cabeca.
-     No celular ela fica em pe e o casal aparece de verdade.
-     Nao ha nada de mask aqui: a mascara do desktop esta dentro de
-     min-width, entao no celular ela nunca chega a existir. */
-  .hero__foto img {
-    object-position: 50% 28%;
-  }
+  /* No celular a foto vem do background do bloco, e o <img> fica
+     escondido. Motivo: o <img> com height em calc + position absolute
+     dentro de um bloco com aspect-ratio se comportava de forma
+     inconsistente no Safari do iOS — em alguns aparelhos a area
+     aparecia vazia. Com background-size: cover o enquadramento e o
+     mesmo e nao depende desse calculo. */
+  .hero__foto img { display: none; }
 
   .hero__texto {
     padding-inline: clamp(18px, 4vw, 40px);

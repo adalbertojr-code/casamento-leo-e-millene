@@ -71,6 +71,19 @@
   color: rgba(108, 95, 99, 0.75);
 }
 
+/* aviso de privacidade logo acima do botao de enviar */
+.campo__privacidade {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--rosa-claro);
+  background: rgba(247, 198, 204, 0.1);
+  font-size: clamp(0.86rem, 1.3vw, 0.98rem);
+  line-height: 1.55;
+  color: var(--tinta-2);
+}
+
+.campo__privacidade b { font-weight: 600; color: var(--tinta); }
+
 .radios { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .radio {

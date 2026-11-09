@@ -154,9 +154,13 @@
       mostraOk(dados);
 
       // Se houver integração de envio, ela entra aqui.
+      // Ao dizer que nao vai, nao abrimos o WhatsApp: quem recusou nao
+      // quer ser jogado numa conversa, e a resposta ja ficou guardada.
       var n = String(CFG.whatsapp || "").replace(/\D/g, "");
-      if (n) {
+      if (n && dados.vai !== "nao") {
         enviarWhats(n, dados);
+      } else if (dados.vai === "nao") {
+        toast("Resposta salva. Obrigado por avisar.");
       } else {
         toast("Resposta salva neste aparelho. Obrigado!");
       }

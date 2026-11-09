@@ -1,0 +1,138 @@
+/* ============================================================
+   VERSÍCULO — brasão M&L à esquerda, citação à direita
+   ============================================================ */
+
+.versiculo {
+  background: var(--rosa-bg);
+  padding-block: clamp(24px, 4vw, 52px) clamp(40px, 6vw, 78px);
+}
+
+.versiculo__onda {
+  display: block;
+  line-height: 0;
+  margin-top: clamp(-52px, -5vw, -34px);
+  margin-bottom: clamp(-10px, -1vw, -2px);
+  position: relative;
+  z-index: 1;
+};
+}
+
+.versiculo__onda svg {
+  width: 100%;
+  height: clamp(26px, 4vw, 52px);
+  display: block;
+}
+
+.versiculo__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 0.46fr) minmax(0, 1.54fr);
+  align-items: center;
+  gap: clamp(18px, 3vw, 44px);
+}
+
+.brasao {
+  position: relative;
+  width: min(100%, 300px);
+  margin-inline: auto;
+}
+
+.brasao img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.versiculo__texto {
+  text-align: left;
+}
+
+.versiculo__citacao {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3.1vw, 2.2rem);
+  line-height: 1.55;
+  color: var(--tinta);
+  max-width: 34ch;
+}
+
+.versiculo__citacao .coracao {
+  width: 0.72em;
+  height: 0.72em;
+  margin-left: 2px;
+}
+
+.versiculo__ref {
+  margin-top: clamp(12px, 1.6vw, 18px);
+  font-family: var(--texto);
+  font-size: clamp(0.84rem, 1.4vw, 1rem);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--rosa-numero);
+}
+
+/* faixa navy de ícones logo abaixo */
+.atalhos {
+  background: var(--navy);
+  color: var(--rosa-claro);
+  padding-block: clamp(26px, 4vw, 44px);
+}
+
+.atalhos__grade {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 1.4vw, 20px);
+}
+
+.atalho {
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: clamp(6px, 1vw, 10px) clamp(4px, 1vw, 10px);
+  position: relative;
+  transition: opacity 0.3s var(--ease);
+}
+
+.atalho + .atalho::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(3px, 0.7vw, 10px));
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: rgba(247, 198, 204, 0.28);
+}
+
+.atalho:hover { opacity: 0.82; }
+
+.atalho__icone {
+  width: clamp(26px, 3.8vw, 36px);
+  height: clamp(26px, 3.8vw, 36px);
+  color: var(--rosa-numero);
+}
+
+.atalho__nome {
+  font-family: var(--texto);
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--branco);
+  line-height: 1.5;
+}
+
+.atalho__sub {
+  font-family: var(--texto);
+  font-size: clamp(0.78rem, 1.25vw, 0.92rem);
+  line-height: 1.5;
+  color: rgba(247, 198, 204, 0.7);
+  max-width: 18ch;
+}
+
+.hero__onda,
+.atalhos__onda {
+  line-height: 0;
+  display: block;
+}
+
+.atalhos__onda svg { width: 100%; height: clamp(26px, 4vw, 52px); display: block; }

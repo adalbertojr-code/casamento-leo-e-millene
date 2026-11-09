@@ -1,0 +1,111 @@
+/* ============================================================
+   FORMULÁRIO DE CONFIRMAÇÃO
+   ============================================================ */
+
+.form-moldura {
+  background: var(--rosa-card);
+  border: 1px solid var(--rosa-borda);
+  border-radius: 10px;
+  padding: clamp(20px, 3vw, 34px);
+  position: relative;
+}
+
+.form-titulo {
+  font-family: var(--script);
+  font-size: clamp(1.7rem, 3.3vw, 2.3rem);
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.form-sub {
+  text-align: center;
+  font-family: var(--texto);
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-2);
+  margin-bottom: clamp(16px, 2vw, 22px);
+}
+
+.form { display: grid; gap: 14px; }
+
+.campo { display: grid; gap: 5px; }
+
+.campo > label,
+.campo > .rotulo {
+  font-family: var(--texto);
+  font-size: clamp(0.8rem, 1.3vw, 0.93rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tinta-2);
+}
+
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+  font-family: var(--texto);
+  font-size: 1rem;
+  padding: 11px 13px;
+  border: 1px solid var(--rosa-borda);
+  border-radius: 6px;
+  background: var(--branco);
+  color: var(--tinta);
+  width: 100%;
+  transition: border-color 0.25s var(--ease);
+}
+
+.campo textarea { resize: vertical; min-height: 78px; }
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--rosa-numero);
+}
+
+.campo__dica {
+  font-size: clamp(0.89rem, 1.35vw, 1.02rem);
+  color: rgba(108, 95, 99, 0.75);
+}
+
+.radios { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--rosa-borda);
+  border-radius: 999px;
+  font-size: clamp(0.97rem, 1.55vw, 1.12rem);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.radio input { accent-color: var(--navy); margin: 0; }
+
+.radio:has(input:checked) {
+  border-color: var(--navy);
+  background: rgba(6, 23, 53, 0.05);
+  color: var(--navy);
+}
+
+.form__ok { display: none; text-align: center; padding: 22px 6px 8px; }
+.form__ok.is-on { display: block; }
+
+.form__ok h3 {
+  font-family: var(--script);
+  font-size: clamp(1.6rem, 3.1vw, 2.2rem);
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.form__ok p {
+  font-size: 1.06rem;
+  color: var(--tinta-2);
+  margin-inline: auto;
+  max-width: 32ch;
+}

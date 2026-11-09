@@ -1,0 +1,132 @@
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 1180px) {
+
+  .hero__grade {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  /* empilhado: a foto ocupa a largura toda, entao o esmaecido
+     da borda esquerda e a folga da onda nao se aplicam */
+  .hero__foto {
+    order: -1;
+    aspect-ratio: 4 / 3;
+    padding-bottom: 0;
+  }
+
+  /* a foto e retrato 3:4; num caixa 4:3 so sobra a cabeca.
+     No celular ela fica em pe e o casal aparece de verdade. */
+  .hero__foto img {
+    object-position: 50% 28%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero__texto {
+    padding-inline: clamp(18px, 4vw, 40px);
+    padding-bottom: clamp(56px, 9vw, 84px);
+  }
+
+  .hero__ramo { width: clamp(150px, 24vw, 240px); }
+
+  .historia__grade,
+  .confirmacao__grade,
+  .versiculo__grade {
+    grid-template-columns: 1fr;
+  }
+
+  .historia__figura {
+    position: static;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .historia__moldura { aspect-ratio: 14 / 13; }
+
+  .versiculo__texto { text-align: center; }
+  .versiculo__citacao { margin-inline: auto; }
+
+  .dia__grade { grid-template-columns: 1fr; gap: 12px; }
+}
+
+@media (max-width: 1040px) {
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    font-size: 1.05rem;
+    letter-spacing: 0.18em;
+    z-index: 80;
+    clip-path: circle(0% at calc(100% - 46px) 34px);
+    transition: clip-path 0.55s var(--ease);
+    visibility: hidden;
+  }
+
+  .nav.is-aberto {
+    clip-path: circle(150% at calc(100% - 46px) 34px);
+    visibility: visible;
+  }
+
+  .menu-btn { display: inline-block; position: relative; z-index: 81; }
+
+  .atalhos__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 8px; }
+
+  .atalho:nth-child(3)::before,
+  .atalho:nth-child(2n+1)::before { display: none; }
+
+  .atalho:nth-child(n+3) {
+    border-top: 1px solid rgba(247, 198, 204, 0.22);
+    padding-top: 14px;
+  }
+
+  .contagem__deck { gap: 5px; }
+
+  .cartao-contagem { padding-inline: 2px; }
+
+  .entre { width: 7px; height: 7px; }
+
+  .presentes__barra { gap: 10px; }
+
+  .progresso { flex: 1 1 100%; max-width: none; width: 100%; }
+
+  .acoes-topo { width: 100%; }
+  .chip { flex: 1; text-align: center; padding-inline: 6px; }
+
+  .lista { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+
+  .hero__foto { aspect-ratio: 3 / 4; }
+
+  .hero__titulo { font-size: min(13.5vw, 3.4rem); }
+
+  .hero__data-script { font-size: clamp(1.8rem, 7.5vw, 2.5rem); }
+
+  .cartao-contagem__num { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+
+  .cartao-contagem { border-radius: 7px; }
+
+  .aviso-musica {
+    flex-wrap: wrap;
+    gap: 10px;
+    bottom: 12px;
+    padding: 12px;
+  }
+
+  .aviso-musica__texto { flex: 1 1 60%; }
+
+  .som { width: 38px; height: 38px; }
+
+  .botao { padding: 12px 18px; font-size: 0.74rem; }
+
+  .presentes__rodape { justify-content: center; text-align: center; }
+  .presentes__nota { text-align: center; }
+}

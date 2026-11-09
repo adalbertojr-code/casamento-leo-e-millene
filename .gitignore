@@ -1,0 +1,15 @@
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editor
+.vscode/
+.idea/
+
+# ferramentas locais do Claude Code
+.claude/
+
+# nada de segredo de verdade nesta lista: o site e estatico
+.env
+.env.*

@@ -1,0 +1,109 @@
+/* ============================================================
+   CONTAGEM REGRESSIVA — deck de 4 cartões sobre a faixa rosa
+   ============================================================ */
+
+.contagem {
+  background: var(--rosa-bg);
+  text-align: center;
+  padding-block: clamp(28px, 4vw, 52px) clamp(44px, 6vw, 78px);
+  position: relative;
+}
+
+.contagem__cabeca {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  margin-bottom: clamp(22px, 3vw, 36px);
+}
+
+.contagem__script {
+  font-family: var(--script);
+  font-size: clamp(1.95rem, 4.2vw, 3.1rem);
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.contagem__sub {
+  font-family: var(--texto);
+  font-size: clamp(0.87rem, 1.5vw, 1.03rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--tinta-2);
+}
+
+.contagem__deck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.4vw, 18px);
+  width: min(100% - (var(--gut) * 2), 980px);
+  margin-inline: auto;
+}
+
+.cartao-contagem {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--rosa-card);
+  border: 1px solid var(--rosa-borda);
+  border-radius: 10px;
+  padding: clamp(14px, 2.4vw, 26px) clamp(4px, 1vw, 12px) clamp(12px, 2vw, 20px);
+  display: grid;
+  justify-items: center;
+  gap: clamp(2px, 0.5vw, 6px);
+  box-shadow: 0 2px 0 rgba(241, 168, 177, 0.16);
+}
+
+.cartao-contagem__num {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  line-height: 1;
+  color: var(--rosa-numero);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.cartao-contagem__rot {
+  font-family: var(--texto);
+  font-size: clamp(0.79rem, 1.4vw, 0.96rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-2);
+}
+
+.cartao-contagem__icone {
+  width: clamp(16px, 2.4vw, 22px);
+  height: clamp(16px, 2.4vw, 22px);
+  color: var(--rosa-faixa);
+  margin-top: 2px;
+}
+
+/* corações entre os cartões */
+.entre {
+  flex: none;
+  color: var(--rosa-faixa);
+  width: clamp(9px, 1.4vw, 13px);
+  height: clamp(9px, 1.4vw, 13px);
+  opacity: 0.95;
+}
+
+/* divisor ornamentado embaixo */
+.divisor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: min(100% - (var(--gut) * 2), 780px);
+  margin: clamp(30px, 4.4vw, 56px) auto 0;
+  color: var(--rosa-faixa);
+}
+
+.divisor::before,
+.divisor::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.divisor svg { width: 26px; height: 26px; flex: none; color: var(--rosa-numero); }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico da lista de presentes</title>
+<style>
+  :root { --vinho:#9A0525; --tinta:#1B1417; --areia:#F8F3EC; --ok:#1F7A4C; --erro:#B3261E; --aviso:#9A6B00; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:clamp(20px,4vw,48px); background:var(--areia); color:var(--tinta);
+         font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.6; }
+  main { max-width:820px; margin-inline:auto; }
+  h1 { font-size:clamp(1.4rem,3vw,2rem); margin:0 0 6px; }
+  p.sub { margin:0 0 28px; color:#5a5054; }
+  .cartao { background:#fff; border:1px solid #e4dcd2; padding:20px 22px; margin-bottom:14px; }
+  .linha { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid #f0eae2; }
+  .linha:last-child { border-bottom:0; }
+  .marca { flex:none; width:20px; height:20px; border-radius:50%; display:grid; place-items:center;
+           font-size:12px; font-weight:700; color:#fff; margin-top:2px; }
+  .marca.ok { background:var(--ok); } .marca.erro { background:var(--erro); }
+  .marca.aviso { background:var(--aviso); } .marca.espera { background:#8b8085; }
+  .texto b { display:block; font-size:0.95rem; }
+  .texto span { font-size:0.86rem; color:#6b6064; }
+  code { background:#f4ede4; padding:2px 6px; font-size:0.84em; border-radius:3px; word-break:break-all; }
+  button { font:inherit; background:var(--vinho); color:#fff; border:0; padding:12px 22px;
+           cursor:pointer; margin-top:8px; font-size:0.9rem; }
+  button:hover { opacity:0.9; }
+  button:disabled { opacity:0.5; cursor:default; }
+  .dica { font-size:0.84rem; color:#6b6064; margin-top:14px; }
+  pre { background:#20191c; color:#f0e6ea; padding:14px; overflow:auto; font-size:0.78rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Diagnóstico da lista de presentes</h1>
+  <p class="sub">Confere se o site consegue ler e gravar no banco dos convidados.</p>
+
+  <div class="cartao" id="lista-checagens"></div>
+
+  <button id="btnTeste" type="button">Testar conexão agora</button>
+  <p class="dica">
+    O teste não reserva nada: ele apenas lê a lista e verifica se o modo
+    está configurado. Nenhum presente é marcado.
+  </p>
+
+  <pre id="detalhe" hidden></pre>
+</main>
+
+<script src="js/config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var CFG = window.CONFIG || {};
+  var box = document.getElementById("lista-checagens");
+  var detalhe = document.getElementById("detalhe");
+  var btn = document.getElementById("btnTeste");
+
+  function linha(estado, titulo, desc) {
+    var simbolo = { ok: "✓", erro: "✕", aviso: "!", espera: "…" }[estado] || "…";
+    return '<div class="linha"><span class="marca ' + estado + '">' + simbolo + '</span>' +
+           '<div class="texto"><b>' + titulo + "</b><span>" + desc + "</span></div></div>";
+  }
+
+  var infra = CFG.infra || {};
+  var modo = String(infra.modo || "local");
+  var url = String(infra.firebaseUrl || "").replace(/\/+$/, "");
+
+  var html = "";
+
+  // 1. modo
+  if (modo === "firebase") {
+    html += linha("ok", "Modo: firebase", "Os convidados compartilham a mesma lista.");
+  } else {
+    html += linha("aviso", "Modo: local",
+      "Cada aparelho guarda as próprias reservas. Para compartilhar entre convidados, " +
+      'troque <code>infra.modo</code> para <code>"firebase"</code>.');
+  }
+
+  // 2. URL
+  if (!url) {
+    html += linha(modo === "firebase" ? "erro" : "aviso", "firebaseUrl vazia",
+      "Preencha <code>infra.firebaseUrl</code> com a URL do Realtime Database.");
+  } else if (!/^https:\/\//.test(url)) {
+    html += linha("erro", "firebaseUrl inválida",
+      "Precisa começar com <code>https://</code>. Recebido: <code>" + url + "</code>");
+  } else {
+    html += linha("ok", "firebaseUrl preenchida", "<code>" + url + "</code>");
+  }
+
+  // 3. nav
+  html += linha("ok", "Página servida por http(s)", location.origin);
+
+  box.innerHTML = html;
+
+  btn.addEventListener("click", function () {
+    btn.disabled = true;
+    box.innerHTML = html + linha("espera", "Testando…", "Falando com o banco.");
+
+    if (!url) {
+      box.innerHTML = html + linha("erro", "Nada para testar", "Preencha firebaseUrl primeiro.");
+      btn.disabled = false;
+      return;
+    }
+
+    var alvo = url + "/reservas.json";
+    var inicio = Date.now();
+
+    fetch(alvo, { cache: "no-store" })
+      .then(function (r) {
+        var ms = Date.now() - inicio;
+        if (r.status === 401 || r.status === 403) {
+          box.innerHTML = html + linha("erro", "Sem permissão de leitura (HTTP " + r.status + ")",
+            "Ajuste as Regras no Firebase: <code>\"reservas\": { \".read\": true }</code>.");
+          btn.disabled = false;
+          return null;
+        }
+        if (!r.ok) {
+          box.innerHTML = html + linha("erro", "Resposta inesperada (HTTP " + r.status + ")",
+            "Confira se a URL é do Realtime Database e termina em firebaseio.com ou firebasedatabase.app.");
+          btn.disabled = false;
+          return null;
+        }
+        var etag = r.headers.get("ETag");
+        return r.json().then(function (d) {
+          var n = d && typeof d === "object" ? Object.keys(d).length : 0;
+          var extra = linha("ok", "Leitura funcionando (" + ms + " ms)",
+            "O banco respondeu. Itens já reservados: <b>" + n + "</b>.");
+          extra += etag
+            ? linha("ok", "Transação por ETag disponível",
+                "A proteção contra dois convidados no mesmo presente vai funcionar.")
+            : linha("aviso", "Sem cabeçalho ETag",
+                "A proteção contra reservas simultâneas pode não funcionar. " +
+                "Verifique se a escrita está liberada só em <code>reservas</code>, " +
+                "e não na raiz do banco.");
+          box.innerHTML = html + extra;
+          detalhe.hidden = false;
+          detalhe.textContent = "GET " + alvo + "\netag: " + (etag || "(nenhum)") + "\n\n" +
+            JSON.stringify(d, null, 2).slice(0, 3000);
+          btn.disabled = false;
+        });
+      })
+      .catch(function (e) {
+        box.innerHTML = html + linha("erro", "Não foi possível conectar",
+          "Erro: <code>" + e.message + "</code>. Causas comuns: URL errada, " +
+          "banco não criado, ou bloqueio de rede.");
+        btn.disabled = false;
+      });
+  });
+})();
+</script>
+</body>
+</html>

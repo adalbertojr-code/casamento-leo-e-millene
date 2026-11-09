@@ -1,0 +1,20 @@
+/* ============================================================
+   LOGO M&L — coração em traço recortado da arte original
+   ============================================================ */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex: none;
+  transition: opacity 0.3s var(--ease);
+}
+
+.logo img { display: block; width: 100%; height: auto; }
+
+.logo--topo { width: clamp(62px, 6vw, 88px); }
+
+.logo--rodape { width: clamp(64px, 8vw, 88px); }
+
+.logo:hover { opacity: 0.82; }

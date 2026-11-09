@@ -1,0 +1,108 @@
+/* ============================================================
+   Léo & Millene — base
+   Paleta medida na arte de referência.
+   ============================================================ */
+
+:root {
+  /* azul */
+  --navy: #061735;
+  --navy-2: #071836;
+
+  /* rosas */
+  --rosa-bg: #FDF3F4;
+  --rosa-bg-2: #FCF2F3;
+  --rosa-card: #FBF7F6;
+  --rosa-numero: #E08898;
+  --rosa-claro: #F7C6CC;
+  --rosa-faixa: #F1A8B1;
+  --rosa-borda: #F5D4D8;
+
+  --tinta: #2B2226;
+  --tinta-2: #6C5F63;
+  --branco: #FFFDFD;
+
+  --display: "Cormorant Garamond", "Garamond", serif;
+  --script: "Great Vibes", "Cormorant Garamond", cursive;
+  --texto: "Marcellus", "Optima", Georgia, serif;
+
+  --gut: clamp(18px, 5vw, 56px);
+  --max: 1160px;
+  --secao: clamp(56px, 9vw, 104px);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--rosa-bg);
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: clamp(17px, 1.2vw, 19.5px);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+p { margin: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+
+::selection { background: var(--rosa-faixa); color: var(--navy); }
+
+:focus-visible { outline: 2px solid var(--rosa-numero); outline-offset: 4px; }
+
+.wrap {
+  width: min(100% - (var(--gut) * 2), var(--max));
+  margin-inline: auto;
+}
+
+/* rótulo em maiúsculas espaçadas, como na arte */
+.rotulo {
+  font-family: var(--texto);
+  font-size: clamp(0.88rem, 1.55vw, 1.04rem);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--tinta-2);
+}
+
+/* coração de ornamento */
+.coracao {
+  color: var(--rosa-numero);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -50,10 +50,10 @@ salva a resposta no aparelho do convidado.
 ## 2. A música — como fazer tocar de verdade
 
 A lógica já está pronta e testada. O arquivo usado hoje é
-`assets/musica-mobile.mp3`, codificado em **64 kbps** (2,5 MB para 5,4 min
-de música). Para música de fundo em caixinha de celular, é o ponto de
-equilíbrio entre peso e qualidade — o original em 320 kbps tinha 13 MB e
-demorava a começar em rede móvel.
+`assets/musica.mp3` — "Amor e Fé (instrumental)", do Hungria Hip Hop,
+com 2 min 15 s e codificado em **64 kbps** (1 MB). Para música de fundo
+em caixinha de celular, é o ponto de equilíbrio entre peso e qualidade;
+o original em 320 kbps tinha 5,4 MB.
 
 **Para trocar a faixa:** salve o arquivo novo e aponte `musica.arquivo`
 em `js/config.js` para ele. Ficando em 64–96 kbps, o carregamento continua
@@ -62,10 +62,13 @@ rápido.
 Se o arquivo não existir, o site **não** mostra o aviso nem finge tocar —
 de propósito, para não prometer o que não acontece.
 
-**Sobre direitos autorais:** a faixa é de terceiros e o site é um convite
-privado, compartilhado só com os convidados, sem fins comerciais. Decisão
-consciente de manter assim. Se um dia o site virar público ou comercial,
-a faixa precisa ser trocada por uma com licença adequada.
+**Sobre direitos autorais:** "Amor e Fé (instrumental)" é obra de terceiros
+(Hungria Hip Hop). A versão aqui é uma instrumental editada, obtida de
+terceiros — a licença dessa gravação não está documentada no projeto. O uso
+pretendido é um convite privado, sem fins comerciais, e o crédito ao autor
+aparece no aviso do site. Se a licença precisar ser comprovada, guarde a
+origem do arquivo. Se o site virar público ou comercial, troque por uma
+faixa com licença explícita.
 
 **Por que às vezes não toca no primeiro segundo:** navegadores só liberam
 áudio depois de uma interação. O site tenta tocar ao carregar; se for
@@ -173,7 +176,7 @@ Como é tudo estático, não há servidor para manter.
 
 - [ ] Colocar os horários e endereços reais em `config.js`
 - [ ] Preencher o `whatsapp` dos noivos
-- [ ] Conferir `assets/musica-mobile.mp3` (ou deixar sem música, de propósito)
+- [ ] Conferir `assets/musica.mp3` (ou deixar sem música, de propósito)
 - [ ] Criar o banco no Firebase e trocar `infra.modo` para `"firebase"`
 - [ ] Abrir `diagnostico.html` e confirmar leitura + ETag
 - [ ] Testar no celular de verdade: hero, lista e formulário

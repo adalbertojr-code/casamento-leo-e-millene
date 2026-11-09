@@ -35,9 +35,9 @@ window.CONFIG = {
   mapaUrl: "",
 
   musica: {
-    titulo: "A hora é agora",
-    artista: "Jorge & Mateus",
-    arquivo: "assets/musica-mobile.mp3"
+    titulo: "Amor e Fé (instrumental)",
+    artista: "Hungria Hip Hop",
+    arquivo: "assets/musica.mp3"
   },
 
   /* ------------------------------------------------------------

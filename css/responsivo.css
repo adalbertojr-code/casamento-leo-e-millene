@@ -21,8 +21,17 @@
      No celular ela fica em pe e o casal aparece de verdade. */
   .hero__foto img {
     object-position: 50% 28%;
+    /* desliga a mascara POR INTEIRO: zerar so a mask-image deixava
+       mask-composite:intersect ativo, e no Safari do iOS isso pinta
+       a imagem inteira de transparente — a foto simplesmente sumia */
+    -webkit-mask: none;
+    mask: none;
     -webkit-mask-image: none;
     mask-image: none;
+    -webkit-mask-composite: add;
+    mask-composite: add;
+    -webkit-mask-mode: match-source;
+    mask-mode: match-source;
   }
 
   .hero__texto {
@@ -74,7 +83,9 @@
     visibility: visible;
   }
 
-  .menu-btn { display: inline-block; position: relative; z-index: 81; }
+  /* grid, e nao inline-block: com display block/inline-block o
+     place-items do botao nao vale e as tres barras ficam no canto */
+  .menu-btn { display: grid; place-items: center; position: relative; z-index: 81; }
 
   .atalhos__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 8px; }
 

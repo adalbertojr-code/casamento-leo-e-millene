@@ -15,7 +15,7 @@ window.CONFIG = {
 
   // WhatsApp dos noivos, só números, com DDI e DDD. Ex.: "5511999999999"
   // Deixe vazio ("") para esconder os botões de WhatsApp.
-  whatsapp: "",
+  whatsapp: "5547997065286",
 
   cerimonia: {
     hora: "A confirmar",

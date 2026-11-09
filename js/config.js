@@ -37,7 +37,7 @@ window.CONFIG = {
   musica: {
     titulo: "A hora é agora",
     artista: "Jorge & Mateus",
-    arquivo: "assets/musica.mp3"
+    arquivo: "assets/musica-mobile.mp3"
   },
 
   /* ------------------------------------------------------------

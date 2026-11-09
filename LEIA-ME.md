@@ -49,11 +49,15 @@ salva a resposta no aparelho do convidado.
 
 ## 2. A música — como fazer tocar de verdade
 
-A lógica já está pronta e testada. Falta só o arquivo.
+A lógica já está pronta e testada. O arquivo usado hoje é
+`assets/musica-mobile.mp3`, codificado em **64 kbps** (2,5 MB para 5,4 min
+de música). Para música de fundo em caixinha de celular, é o ponto de
+equilíbrio entre peso e qualidade — o original em 320 kbps tinha 13 MB e
+demorava a começar em rede móvel.
 
-**Passo único:** salve a faixa como `assets/musica.mp3` (MP3, 128–192 kbps).
-Recarregue a página: a música toca e o aviso "Tocando: A hora é agora"
-aparece no canto.
+**Para trocar a faixa:** salve o arquivo novo e aponte `musica.arquivo`
+em `js/config.js` para ele. Ficando em 64–96 kbps, o carregamento continua
+rápido.
 
 Se o arquivo não existir, o site **não** mostra o aviso nem finge tocar —
 de propósito, para não prometer o que não acontece.
@@ -164,7 +168,7 @@ Como é tudo estático, não há servidor para manter.
 
 - [ ] Colocar os horários e endereços reais em `config.js`
 - [ ] Preencher o `whatsapp` dos noivos
-- [ ] Adicionar `assets/musica.mp3` (ou deixar sem música, de propósito)
+- [ ] Conferir `assets/musica-mobile.mp3` (ou deixar sem música, de propósito)
 - [ ] Criar o banco no Firebase e trocar `infra.modo` para `"firebase"`
 - [ ] Abrir `diagnostico.html` e confirmar leitura + ETag
 - [ ] Testar no celular de verdade: hero, lista e formulário

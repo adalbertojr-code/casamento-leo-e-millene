@@ -65,9 +65,17 @@
 .cartao-contagem__rot {
   font-family: var(--texto);
   font-size: clamp(0.79rem, 1.4vw, 0.96rem);
+  /* o letter-spacing some no fim e o texto se descola do centro;
+     o padding a esquerda compensa o espaco da ultima letra */
   letter-spacing: 0.2em;
+  padding-left: 0.2em;
   text-transform: uppercase;
   color: var(--tinta-2);
+  /* nunca deixa "MINUTOS"/"SEGUNDOS" sairem do cartao */
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
 .cartao-contagem__icone {

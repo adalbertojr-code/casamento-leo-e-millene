@@ -18,20 +18,11 @@
   }
 
   /* a foto e retrato 3:4; num caixa 4:3 so sobra a cabeca.
-     No celular ela fica em pe e o casal aparece de verdade. */
+     No celular ela fica em pe e o casal aparece de verdade.
+     Nao ha nada de mask aqui: a mascara do desktop esta dentro de
+     min-width, entao no celular ela nunca chega a existir. */
   .hero__foto img {
     object-position: 50% 28%;
-    /* desliga a mascara POR INTEIRO: zerar so a mask-image deixava
-       mask-composite:intersect ativo, e no Safari do iOS isso pinta
-       a imagem inteira de transparente — a foto simplesmente sumia */
-    -webkit-mask: none;
-    mask: none;
-    -webkit-mask-image: none;
-    mask-image: none;
-    -webkit-mask-composite: add;
-    mask-composite: add;
-    -webkit-mask-mode: match-source;
-    mask-mode: match-source;
   }
 
   .hero__texto {
@@ -122,6 +113,14 @@
   .hero__data-script { font-size: clamp(1.8rem, 7.5vw, 2.5rem); }
 
   .cartao-contagem__num { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+
+  /* "MINUTOS" e "SEGUNDOS" nao cabiam no cartao estreito do celular:
+     o espacamento de 0,2em empurrava a ultima letra para fora */
+  .cartao-contagem__rot {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding-left: 0.08em;
+  }
 
   .cartao-contagem { border-radius: 7px; }
 

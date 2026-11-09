@@ -217,15 +217,23 @@
   height: calc(100% - clamp(34px, 5vw, 68px));
   object-fit: cover;
   object-position: 50% 70%;
-  /* dissolve a lateral e a base no navy: sem o corte reto embaixo */
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0, #000 7%),
-    linear-gradient(to top, transparent 0, #000 16%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0, #000 7%),
-    linear-gradient(to top, transparent 0, #000 16%);
-  mask-composite: intersect;
+}
+
+/* O esmaecido da foto so existe no desktop (hero em duas colunas).
+   Fica dentro de min-width de proposito: no celular a imagem nunca
+   recebe mask nenhuma, em vez de receber e ter que ser desfeita —
+   no Safari do iOS a tentativa de desfazer deixava a foto invisivel. */
+@media (min-width: 1181px) {
+  .hero__foto img {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, #000 7%),
+      linear-gradient(to top, transparent 0, #000 16%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0, #000 7%),
+      linear-gradient(to top, transparent 0, #000 16%);
+    mask-composite: intersect;
+  }
 }
 
 /* ramo de rosas no canto inferior esquerdo do navy */

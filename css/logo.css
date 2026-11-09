@@ -11,6 +11,8 @@
   transition: opacity 0.3s var(--ease);
 }
 
+.logo picture { display: block; width: 100%; }
+
 .logo img { display: block; width: 100%; height: auto; }
 
 .logo--topo { width: clamp(62px, 6vw, 88px); }

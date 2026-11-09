@@ -229,14 +229,21 @@
 }
 
 /* ramo de rosas no canto inferior esquerdo do navy */
-.hero__ramo {
+/* position no <picture> (o pai do <img>), para o wrapper nao
+   ocupar espaco no fluxo do texto */
+.hero__texto picture:has(.hero__ramo) {
   position: absolute;
   left: clamp(-40px, -2vw, -18px);
   bottom: 0;
   width: clamp(210px, 26vw, 360px);
-  height: auto;
   pointer-events: none;
   z-index: 1;
+}
+
+.hero__ramo {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* ---------- onda da base ---------- */

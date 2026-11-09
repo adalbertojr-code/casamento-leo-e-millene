@@ -36,6 +36,8 @@
   margin-inline: auto;
 }
 
+.brasao picture { display: block; }
+
 .brasao img {
   display: block;
   width: 100%;

@@ -16,8 +16,11 @@
 }
 
 .secao__script {
+  /* margem zerada: agora e um h2 e herda a margem do navegador */
+  margin: 0;
   font-family: var(--script);
   font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+  font-weight: inherit;
   color: var(--navy);
   line-height: 1.2;
 }

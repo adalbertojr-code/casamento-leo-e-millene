@@ -30,7 +30,7 @@
     padding-bottom: clamp(56px, 9vw, 84px);
   }
 
-  .hero__ramo { width: clamp(150px, 24vw, 240px); }
+  .hero__texto picture:has(.hero__ramo) { width: clamp(150px, 24vw, 240px); }
 
   .historia__grade,
   .confirmacao__grade,
